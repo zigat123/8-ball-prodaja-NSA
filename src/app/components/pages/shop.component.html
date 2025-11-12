@@ -1,0 +1,16 @@
+<div class="container my-5">
+  <h1>Shop (placeholder)</h1>
+  <p class="lead">Categories: 8-Balls, Cues & Sticks, Tables.</p>
+
+  <div class="row mt-4">
+    <div class="col-md-4" *ngFor="let n of [1,2,3]">
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">Product {{ n }}</h5>
+          <p class="card-text">Placeholder product description for product {{ n }}.</p>
+          <a class="btn btn-primary btn-sm">Add to cart</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

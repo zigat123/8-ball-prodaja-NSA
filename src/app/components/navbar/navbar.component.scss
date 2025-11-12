@@ -1,0 +1,16 @@
+.navbar-brand{font-weight:700; font-size:1.125rem}
+.navbar{padding:0.5rem 0}
+
+.brand-badge{
+	font-weight:700;
+	padding:0.35rem 0.6rem;
+	transform-origin:center;
+	animation: pulse 1.8s infinite;
+	box-shadow: 0 8px 24px rgba(220,20,60,0.18);
+}
+
+@keyframes pulse{
+	0%{transform:scale(1)}
+	50%{transform:scale(1.07)}
+	100%{transform:scale(1)}
+}
