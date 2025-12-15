@@ -1,16 +1,58 @@
 <div class="container my-5">
-  <h1>Shop (placeholder)</h1>
-  <p class="lead">Categories: 8-Balls, Cues & Sticks, Tables.</p>
-
-  <div class="row mt-4">
-    <div class="col-md-4" *ngFor="let n of [1,2,3]">
-      <div class="card mb-3">
-        <div class="card-body">
-          <h5 class="card-title">Product {{ n }}</h5>
-          <p class="card-text">Placeholder product description for product {{ n }}.</p>
-          <a class="btn btn-primary btn-sm">Add to cart</a>
+  <!-- Hero / intro -->
+  <div class="hero mb-4 p-4">
+    <div class="row align-items-center">
+      <div class="col-md-7">
+        <h1 class="title mb-1">Premium 8-Ball Gear & Accessories</h1>
+        <p class="lead text-muted mb-2">Shop handcrafted cues, tournament tables, and pro-grade 8-balls. Fast shipping across EU.</p>
+        <div class="cta">
+          <button class="btn btn-primary btn-lg mr-2">Shop Now</button>
+          <a class="btn btn-outline-light btn-lg" href="#featured">Featured</a>
         </div>
       </div>
+      <div class="col-md-5 text-right d-none d-md-block">
+        <img src="https://via.placeholder.com/420x220?text=8-Ball+Hero" alt="hero" style="max-width:100%; border-radius:10px; box-shadow:0 20px 60px rgba(2,6,23,0.5)">
+      </div>
+    </div>
+  </div>
+
+  <!-- Filters / header -->
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <div>
+      <h2 class="mb-0">Shop</h2>
+      <p class="mb-0 text-muted">Quality 8-ball pool gear</p>
+    </div>
+    <div class="d-flex gap-2">
+      <input class="form-control form-control-sm" placeholder="Search products" [(ngModel)]="query">
+      <select class="form-control form-control-sm" [(ngModel)]="category">
+        <option *ngFor="let c of categories">{{ c }}</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Featured -->
+  <div id="featured" class="featured mb-4">
+    <div class="row">
+      <div class="col-md-4" *ngFor="let p of (products | slice:0:3)">
+        <div class="card mb-3">
+          <img [src]="p.image" class="card-img-top" alt>
+          <div class="card-body">
+            <h5 class="card-title">{{ p.title }}</h5>
+            <p class="text-muted small mb-2">{{ p.category }}</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <strong class="price">{{ p.price }}</strong>
+              <button class="btn btn-primary btn-sm" (click)="addToCart(p)">Add to cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product grid -->
+  <div class="row mt-4 products">
+    <div class="col-6 col-sm-6 col-md-4 col-lg-3 mb-4" *ngFor="let p of filtered()">
+      <app-product-card [product]="p" [add]="addToCart"></app-product-card>
     </div>
   </div>
 </div>

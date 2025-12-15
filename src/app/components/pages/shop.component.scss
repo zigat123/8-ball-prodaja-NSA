@@ -1,1 +1,17 @@
 .card{min-height:140px}
+
+.product-card{border:0;box-shadow:0 6px 18px rgba(2,6,23,0.08)}
+.product-card img{object-fit:cover;height:180px}
+.products .price{color:#1f7ed0}
+
+@media (min-width:1200px){
+	.product-card img{height:160px}
+}
+
+/* Hero tweaks */
+.hero { color: #fff }
+.hero .lead{color:var(--muted)}
+
+.featured img{height:160px; object-fit:cover}
+
+.products .card .card-body{min-height:84px}

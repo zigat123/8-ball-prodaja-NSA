@@ -1,0 +1,15 @@
+<app-navbar></app-navbar>
+
+<main class="app-main">
+  <app-content></app-content>
+</main>
+
+<app-footer></app-footer>
+
+<router-outlet></router-outlet>
+
+<style>
+  /* BACKUP of removed placeholder content (kept out of main template)
+     Original file contained Angular placeholder marketing block and demo styles.
+     Restored here as a backup in case you need it later. */
+</style>

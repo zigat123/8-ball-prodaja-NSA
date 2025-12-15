@@ -1,0 +1,29 @@
+import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { Product } from '../../services/product.service';
+
+@Component({
+  selector: 'app-product-card',
+  standalone: true,
+  imports: [CommonModule, RouterModule],
+  template: `
+    <div class="card product-card h-100">
+      <a [routerLink]="['/product', product.id]"><img [src]="product.image" class="card-img-top" alt></a>
+      <div class="card-body d-flex flex-column">
+        <h6 class="card-title mb-2"><a [routerLink]="['/product', product.id]">{{ product.title }}</a></h6>
+        <p class="card-text text-muted small mb-1">{{ product.category }}</p>
+        <p class="card-text text-muted small mb-2">{{ product.description }}</p>
+        <div class="mt-auto d-flex justify-content-between align-items-center">
+          <strong class="price">{{ product.price }}</strong>
+          <button class="btn btn-outline-primary btn-sm" (click)="onAdd()">Add</button>
+        </div>
+      </div>
+    </div>
+  `
+})
+export class ProductCardComponent {
+  @Input() product!: Product;
+  @Input() add!: (p: any) => void;
+  onAdd() { if (this.add) this.add(this.product); }
+}

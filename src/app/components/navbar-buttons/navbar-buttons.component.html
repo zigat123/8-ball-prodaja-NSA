@@ -7,7 +7,8 @@
     <i class="fas fa-user-plus"></i>
     <span class="ml-1 d-none d-sm-inline">Register</span>
   </button>
-  <button class="btn btn-outline-light btn-sm">
+  <button class="btn btn-outline-light btn-sm position-relative" (click)="navigateToCart()">
     <i class="fas fa-shopping-cart"></i>
+    <span class="badge badge-pill badge-danger position-absolute" style="top:-6px;right:-6px;font-size:0.7rem">{{ getCartCount() }}</span>
   </button>
 </div>
