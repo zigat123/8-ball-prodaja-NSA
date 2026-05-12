@@ -16,16 +16,37 @@ import { getProducts, Product } from '../../services/product.service';
 export class ShopComponent {
   products: Product[] = getProducts();
   addToCart = addToCart;
-  query = '';
-  category = 'All';
-  categories = ['All', ...Array.from(new Set(this.products.map(p => p.category)))] as string[];
+  query = signal('');
+  category = signal('All');
+  sortBy = signal('featured');
+
+  categories = ['All', ...Array.from(new Set(this.products.map(p => p.category)))];
+
   filtered = computed(() => {
-    const q = this.query?.toLowerCase()?.trim();
+    const q = this.query()?.toLowerCase()?.trim();
     return this.products.filter(p => {
-      if (this.category !== 'All' && p.category !== this.category) return false;
+      if (this.category() !== 'All' && p.category !== this.category()) return false;
       if (!q) return true;
-      return p.title.toLowerCase().includes(q) || (p.category && p.category.toLowerCase().includes(q));
+      return (
+        p.title.toLowerCase().includes(q) ||
+        p.description?.toLowerCase().includes(q) ||
+        p.category.toLowerCase().includes(q)
+      );
     });
+  });
+
+  sorted = computed(() => {
+    const results = [...this.filtered()];
+    if (this.sortBy() === 'priceAsc') {
+      return results.sort((a, b) => a.price - b.price);
+    }
+    if (this.sortBy() === 'priceDesc') {
+      return results.sort((a, b) => b.price - a.price);
+    }
+    if (this.sortBy() === 'newest') {
+      return results.sort((a, b) => b.id - a.id);
+    }
+    return results;
   });
 }
 

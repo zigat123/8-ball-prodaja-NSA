@@ -1,0 +1,9 @@
+import Stripe from 'stripe';
+
+export function getStripe() {
+  const secretKey = process.env.STRIPE_SECRET_KEY;
+  if (!secretKey) {
+    throw new Error('Please define the STRIPE_SECRET_KEY environment variable.');
+  }
+  return new Stripe(secretKey);
+}

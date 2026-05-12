@@ -2,22 +2,23 @@ export interface Product {
   id: number;
   title: string;
   category: string;
-  price: string;
+  price: number;
   image?: string;
   description?: string;
+  badge?: string;
 }
 
 export const sampleProducts: Product[] = [
-  { id: 1, title: 'Standard 8-Ball', category: '8-Balls', price: '€19.99', image: 'https://via.placeholder.com/600x400?text=8-Ball', description: 'Classic resin 8-ball.' },
-  { id: 2, title: 'Pro Cue - Maple', category: 'Cues & Sticks', price: '€129.00', image: 'https://via.placeholder.com/600x400?text=Pro+Cue', description: 'Professional two-piece maple cue with leather wrap.' },
-  { id: 3, title: 'Tournament Table', category: 'Tables', price: '€1299.00', image: 'https://via.placeholder.com/600x400?text=Tournament+Table', description: 'Regulation size tournament table with slate bed.' },
-  { id: 4, title: 'Colored 8-Ball Set', category: '8-Balls', price: '€24.50', image: 'https://via.placeholder.com/600x400?text=Colored+8-Balls', description: 'Vibrant color set for recreational play.' },
-  { id: 5, title: 'Break Cue', category: 'Cues & Sticks', price: '€149.00', image: 'https://via.placeholder.com/600x400?text=Break+Cue', description: 'High-density break cue for powerful breaks.' },
-  { id: 6, title: 'Cue Case - Double', category: 'Accessories', price: '€69.00', image: 'https://via.placeholder.com/600x400?text=Cue+Case', description: 'Padded double cue case with shoulder strap.' },
-  { id: 7, title: 'Chalk Pack (12)', category: 'Accessories', price: '€9.99', image: 'https://via.placeholder.com/600x400?text=Chalk+Pack', description: 'Set of 12 high-quality chalks.' },
-  { id: 8, title: 'Leather Cue Tip (3pk)', category: 'Accessories', price: '€7.50', image: 'https://via.placeholder.com/600x400?text=Cue+Tips', description: 'Durable leather tips for consistent play.' },
-  { id: 9, title: 'Table Brush', category: 'Accessories', price: '€14.00', image: 'https://via.placeholder.com/600x400?text=Table+Brush', description: 'Soft bristle brush to keep your cloth clean.' },
-  { id: 10, title: 'Pro Scoreboard', category: 'Accessories', price: '€29.00', image: 'https://via.placeholder.com/600x400?text=Scoreboard', description: 'Magnetic scoreboard for tournament play.' }
+  { id: 1, title: 'Predator LE Artisan Cue', category: 'Pool cues', price: 2659.0, image: '/images/pr%20le%20artisan%20cue.png', description: 'Limited edition radial cue with premium ebony and inlay.', badge: 'Premium' },
+  { id: 2, title: 'Pro Carbon Fiber Shaft', category: 'Carbon shafts', price: 549.0, image: '/images/Pro%20Carbon%20Fiber%20Shaft.png', description: 'Lightweight carbon fiber shaft for elite control.', badge: 'Top Seller' },
+  { id: 3, title: 'Gamer Break Cue', category: 'Break & jump cues', price: 629.99, image: '/images/Gamer%20Break%20Cue.png', description: 'High-density break cue built for maximum power.' },
+  { id: 4, title: 'Jump Cue Pro', category: 'Jump cue', price: 548.99, image: '/images/Jump%20Cue%20Pro.png', description: 'Precision jump cue with multi-zone grip wrap.' },
+  { id: 5, title: 'Luxury Cue Case', category: 'Cue cases', price: 700.0, image: '/images/Luxury%20Cue%20Case.png', description: 'Butterfly soft cue case with premium leather accents.' },
+  { id: 6, title: 'Tournament Pool Table', category: 'Pool tables', price: 3199.0, image: '/images/Tournament%20Pool%20Table.png', description: 'Regulation table with professional slate and rails.', badge: 'Featured' },
+  { id: 7, title: 'Premium Billiard Ball Set', category: 'Billiard balls', price: 79.99, image: '/images/Premium%20Billiard%20Ball%20Set.png', description: 'Pro-level resin ball set with consistent roll.' },
+  { id: 8, title: 'Professional Chalk Tube', category: 'Chalk', price: 19.99, image: '/images/Professional%20Chalk%20Tube.png', description: 'Long-lasting chalk for crisp cue ball contact.' },
+  { id: 9, title: 'Deluxe Cue Glove', category: 'Gloves', price: 29.0, image: '/images/Deluxe%20Cue%20Glove.png', description: 'Second Skin glove for smooth stroke and grip.' },
+  { id: 10, title: 'Triangle Rack', category: 'Triangle rack', price: 18.99, image: '/images/Triangle%20Rack.png', description: 'Precision molded rack for perfect breaks.' }
 ];
 
 export function getProducts() { return sampleProducts.slice(); }

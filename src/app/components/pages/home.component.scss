@@ -1,1 +1,27 @@
-.container h1{font-weight:700}
+.home-hero {
+  background: linear-gradient(135deg, rgba(21, 24, 33, 0.95), rgba(15, 18, 26, 0.95)), url('/images/premium billiard gear.png') center/cover no-repeat;
+}
+
+.home-hero .btn-gold {
+  background: #d4af37;
+  border-color: #d4af37;
+  color: #111;
+}
+
+.home-hero .btn-gold:hover {
+  background: #b8912d;
+  border-color: #b8912d;
+}
+
+.home-highlights .feature-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.home-store {
+  background: #090a0f;
+}
+
+.home-shell {
+  color: #f8f9fa;
+}
