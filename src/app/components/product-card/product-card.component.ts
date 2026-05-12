@@ -8,8 +8,8 @@ import { Product } from '../../services/product.service';
   standalone: true,
   imports: [CommonModule, RouterModule],
   template: `
-    <div class="card product-card h-100 overflow-hidden">
-      <a [routerLink]="['/product', product.id]"><img [src]="product.image" class="card-img-top" alt></a>
+    <div class="card product-card h-100 w-100 overflow-hidden">
+      <a [routerLink]="['/product', product.id]"><img [src]="product.image" class="card-img-top" alt=""></a>
       <div class="card-body d-flex flex-column">
         <h6 class="card-title mb-2"><a [routerLink]="['/product', product.id]">{{ product.title }}</a></h6>
         <p class="card-text text-muted small mb-1">{{ product.category }}</p>
@@ -20,7 +20,12 @@ import { Product } from '../../services/product.service';
         </div>
       </div>
     </div>
-  `
+  `,
+  styles: [`
+    .product-card { height: 100%; }
+    .card-img-top { height: 240px; object-fit: cover; width: 100%; }
+    .card-body { flex: 1; }
+  `]
 })
 export class ProductCardComponent {
   @Input() product!: Product;

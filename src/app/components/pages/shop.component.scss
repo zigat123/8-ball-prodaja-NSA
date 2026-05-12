@@ -1,6 +1,7 @@
-.card{min-height:140px}
+.card{min-height:300px; display:flex; flex-direction:column}
+.card-body{display:flex; flex-direction:column; flex:1}
 
-.shop-shell{color:#f8fafc}
+.shop-shell{color:#f8fafc; padding-top:2rem; padding-bottom:2rem}
 .shop-hero{background:linear-gradient(180deg,rgba(8,18,33,0.95),rgba(1,8,21,0.95)),url('https://via.placeholder.com/1200x700?text=Billiard+Hero+Scene') center/cover no-repeat;}
 .shop-hero h1{color:#fff; text-shadow:0 16px 40px rgba(0,0,0,0.45)}
 .btn-gold{background:#d4af37; border-color:#d4af37; color:#070707}
@@ -12,9 +13,9 @@
 .hero-card img{border-radius:1rem;}
 .filters-section .form-control, .filters-section .form-select{border-color:#2f3749}
 .category-strip button{border-color:#2f3749}
-.product-card{border:1px solid rgba(212,175,55,0.12); box-shadow:0 18px 40px rgba(0,0,0,0.18); transition:transform .25s ease, box-shadow .25s ease;}
+.product-card{border:1px solid rgba(212,175,55,0.12); box-shadow:0 18px 40px rgba(0,0,0,0.18); transition:transform .25s ease, box-shadow .25s ease; width:100%}
 .product-card:hover{transform:translateY(-4px); box-shadow:0 24px 50px rgba(0,0,0,0.25)}
-.product-card img{object-fit:cover; height:240px}
+.product-card img{object-fit:cover; height:240px; width:100%; display:block}
 .product-card .price{color:#d4af37; font-size:1.05rem}
 .deal-card{min-height:190px}
 .pagination-wrap .btn-secondary{background:#111827; border-color:#2f3749; color:#f8fafc}
@@ -22,4 +23,5 @@
 @media (max-width:767px){
   .shop-hero{padding:2rem}
   .hero-card{display:none}
+  .col-sm-6{min-height:320px}
 }

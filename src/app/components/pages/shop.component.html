@@ -1,5 +1,5 @@
-<div class="shop-shell container my-5">
-  <section class="filters-section rounded-4 p-4 mb-4 bg-dark-secondary border border-secondary">
+<div class="shop-shell container-fluid">
+  <section class="filters-section rounded-4 p-4 mb-4 bg-dark-secondary border border-secondary mx-3 mx-lg-5">
     <div class="row gy-3 align-items-center">
       <div class="col-md-6">
         <label class="form-label text-muted mb-1">Search</label>
@@ -23,9 +23,11 @@
     </div>
   </section>
 
-  <section class="product-grid row gx-4 gy-4">
-    <div class="col-12 col-sm-6 col-lg-4" *ngFor="let product of sorted()">
-      <app-product-card [product]="product" [add]="addToCart"></app-product-card>
+  <div class="container-lg px-3 px-lg-5">
+    <div class="row g-4">
+      <div class="col-12 col-sm-6 col-lg-4 d-flex" *ngFor="let product of sorted()">
+        <app-product-card [product]="product" [add]="addToCart"></app-product-card>
+      </div>
     </div>
-  </section>
+  </div>
 </div>
