@@ -1,27 +1,67 @@
 .home-hero {
-  background: linear-gradient(135deg, rgba(21, 24, 33, 0.95), rgba(15, 18, 26, 0.95)), url('/images/premium billiard gear.png') center/cover no-repeat;
+  min-height: 85vh;
+  background: 
+    linear-gradient(to bottom, rgba(7, 11, 20, 0.7), var(--bg-deep)),
+    url('/images/premium billiard gear.png') center/cover no-repeat;
+  position: relative;
+  
+  .hero-content {
+    max-width: 800px;
+    padding-top: 5rem;
+  }
+  
+  .hero-description {
+    max-width: 600px;
+    line-height: 1.8;
+  }
 }
 
-.home-hero .btn-gold {
-  background: #d4af37;
-  border-color: #d4af37;
-  color: #111;
+.text-gold { color: var(--gold-primary); }
+.border-gold { border-color: var(--gold-primary) !important; }
+
+.category-card {
+  transition: var(--transition);
+  position: relative;
+  z-index: 10;
+  
+  &:hover {
+    transform: translateY(-10px);
+    border-color: var(--gold-primary);
+    
+    .icon-circle {
+      background: var(--gold-primary);
+      color: #000;
+      transform: rotateY(360deg);
+    }
+  }
 }
 
-.home-hero .btn-gold:hover {
-  background: #b8912d;
-  border-color: #b8912d;
+.icon-circle {
+  width: 64px;
+  height: 64px;
+  background: var(--bg-surface);
+  border: 1px solid var(--glass-border);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: var(--gold-primary);
+  transition: var(--transition);
 }
 
-.home-highlights .feature-card {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+.animate-fade-in {
+  animation: fadeIn 1s ease-out;
 }
 
-.home-store {
-  background: #090a0f;
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-.home-shell {
-  color: #f8f9fa;
+@media (max-width: 768px) {
+  .home-hero {
+    min-height: 60vh;
+    .display-3 { font-size: 2.5rem; }
+  }
 }

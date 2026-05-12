@@ -1,51 +1,122 @@
-/* You can add global styles to this file, and also import other style files */
+/* Professional Design System: Midnight Gold Theme */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
 
-html, body, :root { height: 100%; }
-app-root { display: flex; flex-direction: column; min-height: 100vh; }
-
-.app-main { flex: 1 0 auto; }
-
-/* ensure router outlet / content area grows so footer sits at bottom */
-main.app-main { display: block; }
-
-/* Typography & palette */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Playfair+Display:wght@400;600;700&display=swap');
-
-:root{
-	--bg:#0b1220;
-	--card:#0f1724;
-	--muted:#9aa5b1;
-	--accent:#ffd166;
-	--primary:#1f7ed0;
-	--accent-2:#ff6b6b;
-	--max-width:1200px;
+:root {
+  /* Colors */
+  --bg-deep: #070b14;
+  --bg-surface: #0f172a;
+  --bg-surface-glass: rgba(15, 23, 42, 0.7);
+  
+  --gold-primary: #d4af37;
+  --gold-light: #f1d279;
+  --gold-dark: #aa8c2c;
+  
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  
+  --accent-blue: #38bdf8;
+  
+  /* Glassmorphism */
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  --glass-blur: blur(12px);
+  
+  /* Spacing & Borders */
+  --radius-lg: 16px;
+  --radius-md: 12px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-body{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; background:linear-gradient(180deg,#071028 0%, #07111a 60%); color:#e6eef6}
-h1,h2,h3,h4,h5{font-family:'Playfair Display', serif; color:#ffffff}
+html, body {
+  height: 100%;
+  background-color: var(--bg-deep);
+  color: var(--text-primary);
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+}
 
-.container{max-width:var(--max-width)}
+body {
+  background: radial-gradient(circle at top right, #1e293b, var(--bg-deep) 40%);
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
 
-/* Cards, buttons */
-.card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border-radius:12px; border:0}
-.btn-primary{background:linear-gradient(90deg,var(--primary),#3aa0ff); border:0}
-.btn-outline-primary{border-color:rgba(255,255,255,0.06); color:var(--primary)}
+app-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 
-/* Product visuals */
-.product-card{transition:transform .25s, box-shadow .25s}
-.product-card:hover{transform:translateY(-6px); box-shadow:0 18px 40px rgba(2,6,23,0.4)}
-.product-card img{border-top-left-radius:12px; border-top-right-radius:12px}
-.product-card .price{color:var(--accent); font-weight:700}
+.app-main {
+  flex: 1 0 auto;
+}
 
-/* Hero */
-.hero{background:linear-gradient(120deg, rgba(255,209,102,0.06), rgba(255,107,107,0.03)); padding:3.5rem 0; border-radius:12px; margin-bottom:1.5rem}
-.hero .title{font-size:2.25rem; letter-spacing:0.2px}
-.hero .cta{margin-top:1rem}
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif;
+  color: #fff;
+  letter-spacing: -0.02em;
+}
 
-/* Featured */
-.featured .card{min-height:220px}
+/* Utilities */
+.glass {
+  background: var(--bg-surface-glass);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
 
-/* Footer bottom emphasis */
-.site-bottom{font-weight:700; letter-spacing:0.6px; font-size:0.95rem}
+.gold-gradient-text {
+  background: linear-gradient(135deg, var(--gold-light), var(--gold-primary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Base Components Override */
+.card {
+  background: var(--bg-surface);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+  border: none;
+  color: #000;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-md);
+  transition: var(--transition);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px -10px var(--gold-primary);
+  background: linear-gradient(135deg, var(--gold-light), var(--gold-primary));
+}
+
+.btn-outline-gold {
+  border: 1px solid var(--gold-primary);
+  color: var(--gold-primary);
+  background: transparent;
+  transition: var(--transition);
+}
+
+.btn-outline-gold:hover {
+  background: var(--gold-primary);
+  color: #000;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-deep); }
+::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #475569; }
 
 

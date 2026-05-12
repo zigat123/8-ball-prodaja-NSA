@@ -1,33 +1,38 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container">
-    <a class="navbar-brand d-flex align-items-center" href="#">
-      8-Ball Store
-      <span class="brand-badge badge badge-pill badge-danger ml-2" aria-hidden="true">HOT</span>
+<nav class="navbar navbar-expand-lg glass fixed-top">
+  <div class="container py-2">
+    <a class="navbar-brand d-flex align-items-center fw-bold" routerLink="/home">
+      <span class="gold-gradient-text fs-4">8-BALL</span>
+      <span class="brand-suffix ms-1 text-white opacity-75">PRO</span>
     </a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarNav"
-      aria-controls="navbarNav"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
+    
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item"><a class="nav-link" routerLink="/home">Home</a></li>
-        <li class="nav-item"><a class="nav-link" routerLink="/store">Store</a></li>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+        <li class="nav-item">
+          <a class="nav-link px-3" routerLink="/home" routerLinkActive="active">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link px-3" routerLink="/shop" routerLinkActive="active">Products</a>
+        </li>
       </ul>
 
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item" *ngIf="auth$ | async"><a class="nav-link" routerLink="/cart">🛒 Cart</a></li>
-        <li class="nav-item" *ngIf="!(auth$ | async)"><a class="nav-link" routerLink="/login">Login</a></li>
-        <li class="nav-item" *ngIf="!(auth$ | async)"><a class="nav-link" routerLink="/register">Register</a></li>
-        <li class="nav-item" *ngIf="auth$ | async"><a class="nav-link" (click)="logout()">Logout</a></li>
+      <ul class="navbar-nav align-items-center">
+        <li class="nav-item" *ngIf="auth$ | async">
+          <a class="nav-link cart-link position-relative px-3" routerLink="/cart" routerLinkActive="active">
+            <i class="fas fa-shopping-cart me-1"></i> Cart
+          </a>
+        </li>
+        <li class="nav-item ms-lg-2" *ngIf="!(auth$ | async)">
+          <a class="btn btn-outline-gold btn-sm px-4 rounded-pill" routerLink="/login">Login</a>
+        </li>
+        <li class="nav-item ms-lg-2" *ngIf="auth$ | async">
+          <a class="btn btn-primary btn-sm px-4 rounded-pill" (click)="logout()">Logout</a>
+        </li>
       </ul>
     </div>
   </div>
 </nav>
+<div class="nav-spacer"></div>

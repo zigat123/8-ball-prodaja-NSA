@@ -1,33 +1,45 @@
-<div class="shop-shell container-fluid">
-  <section class="filters-section rounded-4 p-4 mb-4 bg-dark-secondary border border-secondary mx-3 mx-lg-5">
-    <div class="row gy-3 align-items-center">
-      <div class="col-md-6">
-        <label class="form-label text-muted mb-1">Search</label>
-        <input class="form-control form-control-lg bg-black text-white border-secondary" placeholder="Search cues, tables, accessories..." [ngModel]="query()" (ngModelChange)="query.set($event)" />
+<div class="shop-shell container-fluid py-5">
+  <div class="container">
+    <div class="shop-header mb-5 text-center">
+      <h1 class="display-4 fw-bold">All <span class="gold-gradient-text">Products</span></h1>
+      <p class="text-muted">Premium equipment for the discerning player.</p>
+    </div>
+
+    <section class="filters-bar glass rounded-pill p-3 mb-5 px-4 mx-auto" style="max-width: 1000px;">
+      <div class="row g-3 align-items-center">
+        <div class="col-lg-5">
+          <div class="input-group">
+            <span class="input-group-text bg-transparent border-0 text-muted"><i class="fas fa-search"></i></span>
+            <input class="form-control bg-transparent border-0 text-white" placeholder="Search products..." [(ngModel)]="query" />
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <select class="form-select bg-transparent border-0 text-white" [(ngModel)]="category">
+            <option *ngFor="let c of categories">{{ c }}</option>
+          </select>
+        </div>
+        <div class="col-lg-4">
+          <select class="form-select bg-transparent border-0 text-white" [(ngModel)]="sortBy">
+            <option value="featured">Recommended</option>
+            <option value="newest">Newest First</option>
+            <option value="priceAsc">Price: Low to High</option>
+            <option value="priceDesc">Price: High to Low</option>
+          </select>
+        </div>
       </div>
-      <div class="col-md-3">
-        <label class="form-label text-muted mb-1">Category</label>
-        <select class="form-select form-select-lg bg-black text-white border-secondary" [ngModel]="category()" (ngModelChange)="category.set($event)">
-          <option *ngFor="let c of categories">{{ c }}</option>
-        </select>
-      </div>
-      <div class="col-md-3">
-        <label class="form-label text-muted mb-1">Sort by</label>
-        <select class="form-select form-select-lg bg-black text-white border-secondary" [ngModel]="sortBy()" (ngModelChange)="sortBy.set($event)">
-          <option value="featured">Recommended</option>
-          <option value="newest">Newest</option>
-          <option value="priceAsc">Price: Low to High</option>
-          <option value="priceDesc">Price: High to Low</option>
-        </select>
+    </section>
+
+    <div class="row g-4">
+      <div class="col-12 col-sm-6 col-lg-4 col-xl-3" *ngFor="let product of sorted">
+        <app-product-card [product]="product"></app-product-card>
       </div>
     </div>
-  </section>
-
-  <div class="container-lg px-3 px-lg-5">
-    <div class="row g-4">
-      <div class="col-12 col-sm-6 col-lg-4 d-flex" *ngFor="let product of sorted()">
-        <app-product-card [product]="product" [add]="addToCart"></app-product-card>
-      </div>
+    
+    <div class="empty-state text-center py-5 mt-5" *ngIf="sorted.length === 0">
+      <div class="icon-circle mb-4 mx-auto bg-surface"><i class="fas fa-search"></i></div>
+      <h3>No products found</h3>
+      <p class="text-muted">Try adjusting your filters or search terms.</p>
+      <button class="btn btn-outline-gold mt-3 rounded-pill px-4" (click)="query=''; category='All'">Clear All Filters</button>
     </div>
   </div>
 </div>

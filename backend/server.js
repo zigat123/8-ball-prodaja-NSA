@@ -11,15 +11,23 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // MongoDB connection
-const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/billiard-store';
-mongoose.connect(mongoURI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-.then(() => console.log('MongoDB connected'))
+const mongoURI = 'mongodb+srv://zigat123:zigat123@cluster0.9kefglw.mongodb.net/?appName=Cluster0';
+mongoose.connect(mongoURI)
+.then(() => console.log('MongoDB Atlas connected'))
 .catch(err => console.error('MongoDB connection error:', err));
 
-// Order schema
+// Schemas
+const productSchema = new mongoose.Schema({
+  title: String,
+  category: String,
+  price: Number,
+  image: String,
+  description: String,
+  badge: String
+});
+
+const Product = mongoose.model('Product', productSchema);
+
 const orderSchema = new mongoose.Schema({
   name: String,
   email: String,
@@ -33,6 +41,24 @@ const orderSchema = new mongoose.Schema({
 const Order = mongoose.model('Order', orderSchema);
 
 // Routes
+app.get('/api/products', async (req, res) => {
+  try {
+    const products = await Product.find();
+    res.json(products);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to fetch products' });
+  }
+});
+
+app.get('/api/products/:id', async (req, res) => {
+  try {
+    const product = await Product.findById(req.params.id);
+    res.json(product);
+  } catch (error) {
+    res.status(404).json({ error: 'Product not found' });
+  }
+});
+
 app.post('/api/orders', async (req, res) => {
   try {
     const order = new Order(req.body);
@@ -44,13 +70,15 @@ app.post('/api/orders', async (req, res) => {
   }
 });
 
-app.get('/api/orders', async (req, res) => {
+// Seed endpoint (One-time use to populate DB)
+app.post('/api/seed', async (req, res) => {
   try {
-    const orders = await Order.find().sort({ createdAt: -1 });
-    res.json(orders);
+    const products = req.body;
+    await Product.deleteMany({}); // Clear existing
+    const inserted = await Product.insertMany(products);
+    res.json({ message: 'Database seeded!', count: inserted.length });
   } catch (error) {
-    console.error('Error fetching orders:', error);
-    res.status(500).json({ error: 'Failed to fetch orders' });
+    res.status(500).json({ error: 'Seeding failed' });
   }
 });
 

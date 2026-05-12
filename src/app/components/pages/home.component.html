@@ -1,25 +1,54 @@
 <div class="home-shell">
-  <section class="home-hero py-5 text-white text-center">
-    <div class="container">
-      <span class="badge bg-gold text-dark mb-3">8-Ball Premium</span>
-      <h1 class="display-5 fw-bold">Your home for cues, tables, and elite billiard gear.</h1>
-      <p class="lead text-muted mb-4">Browse the full collection on one page, with premium categories, featured picks, and a seamless shopping experience.</p>
-      <div class="d-flex justify-content-center gap-3 flex-wrap">
-        <a routerLink="/store" class="btn btn-gold btn-lg">Shop Now</a>
-        <a routerLink="/cart" class="btn btn-outline-light btn-lg">View Cart</a>
+  <section class="home-hero d-flex align-items-center">
+    <div class="container text-center">
+      <div class="hero-content mx-auto animate-fade-in">
+        <span class="badge rounded-pill glass px-3 py-2 mb-4 text-gold border-gold">EST. 2026 | PREMIUM QUALITY</span>
+        <h1 class="display-3 fw-bold mb-4">Precision Meets <span class="gold-gradient-text">Elegance</span></h1>
+        <p class="lead text-secondary mb-5 mx-auto hero-description">Discover our curated collection of professional-grade cues, handcrafted tables, and elite billiard accessories designed for champions.</p>
+        <div class="d-flex justify-content-center gap-4 flex-wrap">
+          <a routerLink="/shop" class="btn btn-primary btn-lg px-5">Explore Collection</a>
+          <a routerLink="/cart" class="btn btn-outline-gold btn-lg px-5">View My Cart</a>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="home-store py-5">
+  <section class="featured-categories py-5">
     <div class="container">
-      <div class="d-flex justify-content-between align-items-center mb-4 flex-column flex-md-row gap-3">
-        <div>
-          <h2 class="mb-1">Explore the store</h2>
-          <p class="text-muted mb-0">Everything from premium cues and shafts to tables, cases, and accessories.</p>
+      <div class="row g-4 mt-n5">
+        <div class="col-md-4">
+          <div class="category-card glass p-4 text-center">
+            <div class="icon-circle mb-3 mx-auto"><i class="fas fa-magic"></i></div>
+            <h4 class="mb-2">Pro Cues</h4>
+            <p class="text-muted small">Carbon fiber & exotic wood shafts.</p>
+            <a routerLink="/shop" [queryParams]="{category: 'Pool cues'}" class="stretched-link"></a>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="category-card glass p-4 text-center">
+            <div class="icon-circle mb-3 mx-auto"><i class="fas fa-table"></i></div>
+            <h4 class="mb-2">Tables</h4>
+            <p class="text-muted small">Handcrafted tournament slate tables.</p>
+            <a routerLink="/shop" [queryParams]="{category: 'Pool tables'}" class="stretched-link"></a>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="category-card glass p-4 text-center">
+            <div class="icon-circle mb-3 mx-auto"><i class="fas fa-box"></i></div>
+            <h4 class="mb-2">Accessories</h4>
+            <p class="text-muted small">Cases, chalk, and precision tools.</p>
+            <a routerLink="/shop" [queryParams]="{category: 'Chalk'}" class="stretched-link"></a>
+          </div>
         </div>
       </div>
-      <app-shop></app-shop>
+
+      <div class="shop-preview mt-5 pt-5">
+        <div class="text-center mb-5">
+          <h2 class="display-5 mb-3">Trending Now</h2>
+          <p class="text-muted">Explore our most popular selections of the season.</p>
+        </div>
+        <app-shop></app-shop>
+      </div>
     </div>
   </section>
 </div>
